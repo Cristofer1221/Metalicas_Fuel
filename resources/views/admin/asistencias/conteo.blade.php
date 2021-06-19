@@ -12,6 +12,7 @@
             <div class="card text-center">
                 <div class="card-header">
                     <h4>Datos de asistencias</h4>
+                    
                 </div>
                 <div class="card-body"  style="margin: 0 auto;">
 
