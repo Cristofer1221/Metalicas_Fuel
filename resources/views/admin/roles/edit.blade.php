@@ -13,7 +13,6 @@
 
                     @include('admin.roles.partials.form')
 
-
                     {!! Form::submit('Actualizar Role', ['class'=>'btn btn-primary mt-2']) !!}
 
                 {!! Form::close() !!}

@@ -1,7 +1,8 @@
 <div>
     <div class="card table-responsive">
         <div class="card-header">
-            <input wire:keydown="limpiar_page" wire:model="search"  class="form-control w-100" placeholder="Escriba un nombre">
+            <input wire:keydown="limpiar_page" wire:model="search"  class="form-control w-100"
+            placeholder="Realice una busqueda por nombre, apellido, correo, cédula y celular">
         </div>
 
         @if (session('info'))
@@ -9,53 +10,41 @@
                 <h4 class="alert-heading">¡Éxito!</h4> {{session('info')}}
             </div>
         @endif
+        <br>
+        <a class="btn btn-success d-grid gap-2 col-6 mx-auto" href="{{route('admin.clientes.create')}}">Crear Cliente</a>
 
-        <a class="btn btn-success" href="{{route('admin.users.create')}}">Crear Usuario</a>
-        @if ($users->count())
+        @if ($clientes->count())
 
             <div class="card-body">
 
-                <br>
                 <table class="table-responsive table">
                     {{-- <table class="table table-striped"> --}}
                         <thead>
                             <th>ID</th>
                             <th>Nombre</th>
-                            <th>Email</th>
-                            <th>Cedula</th>
-                            <th>Fecha de Nacimiento</th>
-                            <th>Estado Civil</th>
-                            <th>Dirección</th>
-                            <th>Telf. Convencional</th>
-                            <th>Celular</th>
-                            <th>Especialización</th>
-                            <th>Jornada</th>
-                            <th>Genero</th>
+                            <th>Apellido</th>
+                            <th>Correo Electrónico</th>
+                            <th>Cédula</th>
+                            <th>Número Celular</th>
                         </thead>
                         <tbody>
-                            @foreach ($users as $user )
+                            @foreach ($clientes as $cliente)
                                 <tr>
-                                    <td>{{$user->id}}</td>
-                                    <td>{{$user->name}}</td>
-                                    <td>{{$user->email}}</td>
-                                    <td>{{$user->cedula}}</td>
-                                    <td>{{$user->nacimiento}}</td>
-                                    <td>{{$user->estadocivil}}</td>
-                                    <td>{{$user->direccion}}</td>
-                                    <td>{{$user->telefono}}</td>
-                                    <td>{{$user->celular}}</td>
-                                    <td>{{$user->especializacion}}</td>
-                                    <td>{{$user->jornada}}</td>
-                                    <td>{{$user->genero}}</td>
+                                    <td>{{$cliente->id}}</td>
+                                    <td>{{$cliente->cnombre}}</td>
+                                    <td>{{$cliente->capellido}}</td>
+                                    <td>{{$cliente->cemail}}</td>
+                                    <td>{{$cliente->ccedula}}</td>
+                                    <td>{{$cliente->ccelular}}</td>
 
                                     <td width="10px">
 
                                         <td >
-                                            <a  class="btn btn-primary" href="{{route('admin.users.edit',$user)}}">Editar</a>
+                                            <a  class="btn btn-primary" href="{{route('admin.clientes.edit',$cliente)}}">Editar</a>
                                         </td>
 
                                         <td >
-                                            <form action="{{route('admin.users.destroy', $user)}}" class="formulario-eliminar" method="POST">
+                                            <form action="{{route('admin.clientes.destroy', $cliente)}}" class="formulario-eliminar" method="POST">
                                                 @method('delete')
                                                 @csrf
                                             <button class="btn btn-danger" type="submit">Eliminar</button>
@@ -70,7 +59,7 @@
                 </table>
             </div>
             <div class="card-footer">
-                {{$users->links()}}
+                {{$clientes->links()}}
             </div>
         @else
             <div class="card-body alert alert-danger d-flex align-items-center" role="alert">
@@ -85,11 +74,11 @@
 @section('js')
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    @if (session('info')=='El usuario se elimino con éxito.')
+    @if (session('info')=='El cliente se elimino con éxito.')
         <script>
             Swal.fire(
                 '¡Eliminado!',
-                'El usuario se elimino con éxito.',
+                'El cliente se elimino con éxito.',
                 'success'
                 )
         </script>
@@ -101,7 +90,7 @@
             e.preventDefault();
             Swal.fire({
             title: '¿Estás seguro?',
-            text: "¡Este usuario se eliminara definitivamente!",
+            text: "¡Este cliente se eliminara definitivamente!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',

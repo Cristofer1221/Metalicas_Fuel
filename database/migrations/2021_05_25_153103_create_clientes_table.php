@@ -21,8 +21,6 @@ class CreateClientesTable extends Migration
             $table->string('ccedula',10);
             $table->string('ccelular',10);
 
-
-
             $table->timestamps();
         });
     }

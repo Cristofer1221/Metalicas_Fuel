@@ -286,13 +286,13 @@ return [
             'text' => 'Asistencia Personal',
             'route'  =>'admin.conteo',
             'icon' => 'fas fa-fw fa-user-check',
-            
         ],
 
         [
             'text' => 'Clientes',
-            'url'  => 'admin/settings',
+            'route'  => 'admin.clientes.index',
             'icon' => 'fas fa-fw fa-address-card',
+            'active' => ['admin.clientes.*']
         ],
         [
             'text' => 'Instalaciones',

@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AsistenciaController;
 use App\Http\Controllers\Admin\FechaController;
 use App\Http\Controllers\Admin\ConteoController;
+use App\Http\Controllers\Admin\ClienteController;
 
 
 
@@ -21,6 +22,8 @@ Route::resource('asistencias',AsistenciaController::class)->names('admin.asisten
 Route::resource('fechas',FechaController::class)->names('admin.fechas');
 
 Route::get('conteo',[ConteoController::class,'index'])->name('admin.conteo');
+
+Route::resource('clientes', ClienteController::class)->names('admin.clientes');
 
 
 

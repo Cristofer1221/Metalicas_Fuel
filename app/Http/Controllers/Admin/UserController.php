@@ -136,7 +136,7 @@ class UserController extends Controller
         ]);
 
         $user->roles()->sync($request->roles);
-        return redirect()->route('admin.users.edit', $user)->with('info','El usuario se edito con éxito');
+        return redirect()->route('admin.users.edit', $user)->with('info','El usuario se editó con éxito');
     }
 
     /**
