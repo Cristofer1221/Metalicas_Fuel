@@ -16,7 +16,7 @@
         <div class="card-header card-footer text-muted">
             <h5>&nbsp; Datos de Usuario Modificado</h5>
         </div>
-        <div class="card-body text-center ">
+        <div class="card-body text-center mx-auto ">
             <div class="card mb-0 " style="max-width: 540px;">
               <div class="row g-8">
                     <div class="col-md-4">

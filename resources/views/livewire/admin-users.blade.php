@@ -1,7 +1,8 @@
 <div>
     <div class="card table-responsive">
         <div class="card-header">
-            <input wire:keydown="limpiar_page" wire:model="search"  class="form-control w-100" placeholder="Escriba un nombre">
+            <input wire:keydown="limpiar_page" wire:model="search"  class="form-control w-100" placeholder="
+            Realice una búsqueda por nombre, email, cédula, dirección, teléfonos o celular.">
         </div>
 
         @if (session('info'))
@@ -9,8 +10,8 @@
                 <h4 class="alert-heading">¡Éxito!</h4> {{session('info')}}
             </div>
         @endif
-
-        <a class="btn btn-success" href="{{route('admin.users.create')}}">Crear Usuario</a>
+        <br>
+        <a class="btn btn-success d-grid gap-6 col-4 mx-auto" href="{{route('admin.users.create')}}">Crear Usuario</a>
         @if ($users->count())
 
             <div class="card-body">

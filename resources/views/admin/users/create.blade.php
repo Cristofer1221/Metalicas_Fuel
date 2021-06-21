@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-    
+
     <div class="card container">
         @if (count($errors)>0)
             <div class="alert alert-danger">
@@ -131,7 +131,7 @@
                         {{ Form::select('genero', array('M' => 'M', 'F' => 'F', 'Otros' => 'Otros'), null, ['class' => 'form-control']) }}
                     </div>
 
-                    <div class="d-grid gap-6 col-4 mx-auto">
+                    <div class="d-grid gap-2 col-6 mx-auto">
                         {!! Form::submit('Crear Usuario', ['class'=>'mt-4 btn btn-primary ']) !!}
                     </div>
 
