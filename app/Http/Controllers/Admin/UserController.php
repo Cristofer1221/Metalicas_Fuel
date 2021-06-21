@@ -39,13 +39,13 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' =>'required|min:4|alpha',
+            'name' =>'required|min:4|regex:/^[a-zA-Z\s]+$/u',
             'email' =>'required|email:rfc,dns',
             'password' =>'required|confirmed|min:6|alpha_num',
             'cedula'=>'required|size:10',
             'nacimiento'=>'required|date',
             'estadocivil'=>'required|in:solter@,casad@,divorciad@,viud@,unión libre,unión de hecho,otros',
-            'direccion'=>'required|alpha_dash|max:150',
+            'direccion'=>'required|min:2|max:150|regex:/^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/',
             'telefono'=>'required|min:7|max:10',
             'celular'=>'required|min:10|max:10',
             'especializacion'=>'required|in:Tec. Artesanal,Tec. Industrial,Administrativ@',
@@ -120,7 +120,39 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        // return $request->all();
+        $request->validate([
+            'name' =>'required|min:4|regex:/^[a-zA-Z\s]+$/u',
+            'email' =>'required|email:rfc,dns',
+            'password' =>'required|confirmed|min:6|alpha_num',
+            'cedula'=>'required|size:10',
+            'nacimiento'=>'required|date',
+            'estadocivil'=>'required|in:solter@,casad@,divorciad@,viud@,unión libre,unión de hecho,otros',
+            'direccion'=>'required|min:2|max:150|regex:/^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/',
+            'telefono'=>'required|min:7|max:10',
+            'celular'=>'required|min:10|max:10',
+            'especializacion'=>'required|in:Tec. Artesanal,Tec. Industrial,Administrativ@',
+            'genero'=>'required|in:M,F,Otros'
+        ],[
+            'name.required'=>'El campo nombre es obligatorio.',
+            'name.alpha'=>'El campo nombre solo debe contener letras.',
+            'name.min'=>'El campo nombre debe de tener mas de 4 caracteres.',
+            'email.required'=>'El campo correo es obligatorio.',
+            'cedula.required'=>'El campo cédula es obligatorio.',
+            'cedula.size'=>'El campo cédula debe de tener 10 digitos.',
+            'password.required'=>'Se necesita una contraseña.',
+            'password.min'=>'Se necesita al menos 6 caracteres alfa-numéricos en la constraseña.',
+            'password.confirmed'=>'Se necesita confirmar su contraseña.',
+            'nacimiento.required'=>'El campo fecha de nacimiento es obligatorio.',
+            'direccion.required'=>'El campo dirección es obligatorio.',
+            'telefono.required'=>'El campo teléfono convencional es obligatorio.',
+            'telefono.min'=>'El campo teléfono convencional debe de tener minimo 7 caracteres.',
+            'telefono.max'=>'El campo teléfono convencional debe de tener maximo 10 caracteres.',
+            'celular.required'=>'El campo celular es obligatorio.',
+            'celular.min'=>'El campo celular debe tener 10 caracteres.',
+            'celular.max'=>'El campo celular debe tener 10 caracteres.',
+
+        ]);
+
         $user->update([
             'name'=>$request->name,
             'email'=>$request->email,

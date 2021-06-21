@@ -23,6 +23,6 @@ class ClienteSeeder extends Seeder
             'ccelular'=>'0912345678'
         ]);
 
-        Cliente::factory(60)->create();
+        Cliente::factory(30)->create();
     }
 }

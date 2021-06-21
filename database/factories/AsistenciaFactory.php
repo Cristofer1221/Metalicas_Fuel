@@ -22,10 +22,15 @@ class AsistenciaFactory extends Factory
      */
     public function definition()
     {
-        return [
-            'user_id'=>$this->faker->numberBetween(1, User::count()),
-            'afecha'=> $this->faker->date(),
-            'estado'=>$this->faker->randomElement(['Presente','Ausente']),
-        ];
+
+
+                return [
+                    'fecha_id'=>'1',
+                    'usuarios_id'=>'1',
+                    'estado'=>$this->faker->randomElement(['1','0']),
+                ];
+
+
+
     }
 }
