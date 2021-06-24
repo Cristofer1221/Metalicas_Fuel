@@ -131,7 +131,7 @@
                         {{ Form::select('genero', array('M' => 'M', 'F' => 'F', 'Otros' => 'Otros'), null, ['class' => 'form-control']) }}
                     </div>
 
-                    <div class="d-grid gap-2 col-6 mx-auto">
+                    <div class="d-grid mx-auto">
                         {!! Form::submit('Crear Usuario', ['class'=>'mt-4 btn btn-primary ']) !!}
                     </div>
 

@@ -15,24 +15,16 @@ class CreateInstalacionsTable extends Migration
     {
         Schema::create('instalacions', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('usuarios_id')->constrained('users');
+            $table->foreignId('clientes_id')->constrained('clientes');
+
+            $table->string('intipo',35);
             $table->date('infecha');
-            $table->string('inciudad',80);
+            $table->string('estado',20);
+            $table->string('inciudad',40);
             $table->string('incalles',150);
             $table->longText('inindescripcion');
-            $table->string('inobservacion',200);
-
-            // $table->unsignedBigInteger('personal_id')->nullable();
-            // $table->foreign('personal_id')
-            //       ->references('id')
-            //       ->on('personals')
-            //       ->onDelete('set null');
-
-            $table->unsignedBigInteger('cliente_id')->nullable();
-            $table->foreign('cliente_id')
-                  ->references('id')
-                  ->on('clientes')
-                  ->onDelete('set null');
-
+            $table->string('inobservacion',150);
 
             $table->timestamps();
         });

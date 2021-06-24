@@ -80,6 +80,13 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Asistencia');
     }
 
+    public function instalaciones(){
+        return $this->hasMany('App\Models\Instalacion');
+    }
+
+
+
+
     //mostrar la imagen en adminlte de usuarios
     public function adminlte_image(){
 

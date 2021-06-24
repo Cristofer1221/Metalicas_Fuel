@@ -296,8 +296,9 @@ return [
         ],
         [
             'text' => 'Instalaciones',
-            'url'  => 'admin/settings',
+            'route'  => 'admin.instalaciones.index',
             'icon' => 'fas fa-fw fa-briefcase',
+            'active' => ['admin.instalaciones.*']
         ],
         [
             'text' => 'Informes',

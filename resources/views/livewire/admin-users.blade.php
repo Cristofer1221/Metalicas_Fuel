@@ -32,6 +32,7 @@
                             <th>Especialización</th>
                             <th>Jornada</th>
                             <th>Genero</th>
+                            <th>Acciones</th>
                         </thead>
                         <tbody>
                             @foreach ($users as $user )
@@ -49,21 +50,18 @@
                                     <td>{{$user->jornada}}</td>
                                     <td>{{$user->genero}}</td>
 
-                                    <td width="10px">
-
-                                        <td >
-                                            <a  class="btn btn-primary" href="{{route('admin.users.edit',$user)}}">Editar</a>
-                                        </td>
-
-                                        <td >
-                                            <form action="{{route('admin.users.destroy', $user)}}" class="formulario-eliminar" method="POST">
-                                                @method('delete')
-                                                @csrf
-                                            <button class="btn btn-danger" type="submit">Eliminar</button>
-                                            </form>
-                                        </td>
-
+                                    <td >
+                                        <a  class="btn btn-primary" href="{{route('admin.users.edit',$user)}}">Editar</a>
                                     </td>
+
+                                    <td >
+                                        <form action="{{route('admin.users.destroy', $user)}}" class="formulario-eliminar" method="POST">
+                                            @method('delete')
+                                            @csrf
+                                            <button class="btn btn-danger" type="submit">Eliminar</button>
+                                        </form>
+                                    </td>
+                                    
                                 </tr>
                             @endforeach
                         </tbody>

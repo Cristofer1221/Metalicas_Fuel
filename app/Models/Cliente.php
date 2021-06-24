@@ -13,7 +13,7 @@ class Cliente extends Model
     protected $guarded = ['id'];
 
     //relacion uno a muchos instalacion
-    public function instalacions(){
+    public function instalaciones(){
         return $this ->hasMany('App\Models\Instalacion');
     }
 

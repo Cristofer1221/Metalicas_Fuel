@@ -52,7 +52,7 @@ class UserController extends Controller
             'genero'=>'required|in:M,F,Otros'
         ],[
             'name.required'=>'El campo nombre es obligatorio.',
-            'name.alpha'=>'El campo nombre solo debe contener letras.',
+            'name.regex'=>'El campo nombre solo debe contener letras.',
             'name.min'=>'El campo nombre debe de tener mas de 4 caracteres.',
             'email.required'=>'El campo correo es obligatorio.',
             'cedula.required'=>'El campo cédula es obligatorio.',

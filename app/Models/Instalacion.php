@@ -13,14 +13,20 @@ class Instalacion extends Model
     protected $guarded = ['id'];
 
     //relacion uno a muchos desde personal(inversa)
-    public function personals(){
-        return $this->belongsTo('App\Models\Personal');
+    public function usuario(){
+        return $this->belongsTo('App\Models\User','usuarios_id');
     }
 
     //relacion uno a muchos desde cliente (inversa)
-    public function clientes(){
-        return $this->belongsTo('App\Models\Cliente');
+    public function cliente(){
+        return $this->belongsTo('App\Models\Cliente','clientes_id');
     }
+
+
+
+
+
+
 
     //relacion uno a uno
     public function informes(){
