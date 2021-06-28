@@ -57,7 +57,9 @@
                                     <a  class="btn btn-primary" href="{{route('admin.instalaciones.edit',$instalacion)}}">Editar</a>
                                     @method('delete')
                                     @csrf
+                                    &nbsp;
                                     <button class="btn btn-danger" type="submit">Eliminar</button>
+                                    <a href="{{route('admin.instalaciones.show',$instalacion)}}" class="btn btn-info">PDF</a>
                                 </form>
                             </td>
                         </tr>

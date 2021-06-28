@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Cliente;
 use App\Models\Instalacion;
+use PDF;
 
 class InstalacionController extends Controller
 {
@@ -117,6 +118,13 @@ class InstalacionController extends Controller
     {
         $instalacione->delete();
         return redirect()->route('admin.instalaciones.index')->with('info','La instalación se elimino con éxito.');
+    }
+
+    public function show(Instalacion $instalacione){
+        //dd($instalacione);
+        $pdf=PDF::loadview('admin.instalaciones.descargapdf', compact('instalacione'));
+        return $pdf->download('hojad_de_trabajo.pdf');
+        //return view('admin.instalaciones.descargapdf', compact('instalacione'));
     }
 
 

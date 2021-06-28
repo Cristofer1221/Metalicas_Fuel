@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\FechaController;
 use App\Http\Controllers\Admin\ConteoController;
 use App\Http\Controllers\Admin\ClienteController;
 use App\Http\Controllers\Admin\InstalacionController;
+use App\Http\Controllers\Admin\PdfInstalacionesController;
 
 
 
@@ -27,6 +28,8 @@ Route::get('conteo',[ConteoController::class,'index'])->name('admin.conteo');
 Route::resource('clientes', ClienteController::class)->names('admin.clientes');
 
 Route::resource('instalaciones', InstalacionController::class)->names('admin.instalaciones');
+
+
 
 
 
