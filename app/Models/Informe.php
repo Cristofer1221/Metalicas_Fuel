@@ -12,12 +12,7 @@ class Informe extends Model
 
     protected $guarded = ['id'];
 
-    //relacion uno a muchos inversa
-    public function personals(){
-        return $this->belongsTo('App\Models\Personal');
-    }
-
     public function instalacions(){
-        return $this->belongsTo('App\Models\Instalacion');
+        return $this->belongsTo('App\Models\Instalacion','instalaciones_id');
     }
 }

@@ -45,7 +45,7 @@ class InstalacionController extends Controller
             'incalles.regex'=>'El campo calles debe de contener solamente caracteres alfa numéricos.',
             'inindescripcion.required'=>'El campo descripción es obligatorio.',
             'inindescripcion.max'=>'El campo descripción debe de tener un maximo de 150 caracteres.',
-            'inindescripcion.regex'=>'El campo observaciones debe de contener solamente caracteres alfa numéricos.',
+            'inindescripcion.regex'=>'El campo descripción debe de contener solamente caracteres alfa numéricos.',
             'inobservacion.required'=>'El campo observaciones es obligatorio.',
             'inobservacion.max'=>'El campo observaciones debe de tener un maximo de 150 caracteres.',
             'inobservacion.regex'=>'El campo observaciones debe de contener solamente caracteres alfa numéricos.',
@@ -122,9 +122,10 @@ class InstalacionController extends Controller
 
     public function show(Instalacion $instalacione){
         //dd($instalacione);
-        $pdf=PDF::loadview('admin.instalaciones.descargapdf', compact('instalacione'));
-        return $pdf->download('hojad_de_trabajo.pdf');
+         $pdf=PDF::loadview('admin.instalaciones.descargapdf', compact('instalacione'));
+        //return $pdf->download('hojad_de_trabajo.pdf');
         //return view('admin.instalaciones.descargapdf', compact('instalacione'));
+        return $pdf->stream();
     }
 
 

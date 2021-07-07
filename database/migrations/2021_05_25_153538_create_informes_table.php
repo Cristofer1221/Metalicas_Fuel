@@ -15,18 +15,12 @@ class CreateInformesTable extends Migration
     {
         Schema::create('informes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('instalaciones_id')->constrained('instalacions');
 
             $table->date('ifecha');
-            $table->string('iestado',15);
+            $table->string('iestado',20);
             $table->longText('idescripcion');
             $table->string('iobservaciones',200);
-
-            $table->unsignedBigInteger('instalacion_id')->nullable();
-
-            $table->foreign('instalacion_id')
-                  ->references('id')
-                  ->on('instalacions')
-                  ->onDelete('set null');
 
             $table->timestamps();
         });

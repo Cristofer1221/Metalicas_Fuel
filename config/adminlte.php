@@ -302,11 +302,12 @@ return [
         ],
         [
             'text' => 'Informes',
-            'url'  => 'admin/settings',
+            'route'  => 'admin.informes.index',
             'icon' => 'fas fa-fw fa-file-alt',
+            'active' => ['admin.informes.*']
         ],
         [
-            'text' => 'Factura',
+            'text' => 'Nota de Venta',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-file-invoice-dollar'
         ],

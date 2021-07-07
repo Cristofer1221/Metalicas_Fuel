@@ -59,7 +59,7 @@
                                     @csrf
                                     &nbsp;
                                     <button class="btn btn-danger" type="submit">Eliminar</button>
-                                    <a href="{{route('admin.instalaciones.show',$instalacion)}}" class="btn btn-info">PDF</a>
+                                    <a href="{{route('admin.instalaciones.show',$instalacion)}}" class="btn btn-info" target="_blank">PDF</a>
                                 </form>
                             </td>
                         </tr>

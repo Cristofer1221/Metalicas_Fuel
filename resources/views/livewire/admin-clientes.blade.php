@@ -26,6 +26,7 @@
                             <th>Correo Electrónico</th>
                             <th>Cédula</th>
                             <th>Número Celular</th>
+                            <th>Acciones</th>
                         </thead>
                         <tbody>
                             @foreach ($clientes as $cliente)
@@ -38,19 +39,13 @@
                                     <td>{{$cliente->ccelular}}</td>
 
                                     <td width="10px">
-
-                                        <td >
                                             <a  class="btn btn-primary" href="{{route('admin.clientes.edit',$cliente)}}">Editar</a>
-                                        </td>
 
-                                        <td >
                                             <form action="{{route('admin.clientes.destroy', $cliente)}}" class="formulario-eliminar" method="POST">
                                                 @method('delete')
                                                 @csrf
-                                            <button class="btn btn-danger" type="submit">Eliminar</button>
+                                                <button class="btn btn-danger" type="submit">Eliminar</button>
                                             </form>
-                                        </td>
-
                                     </td>
                                 </tr>
                             @endforeach

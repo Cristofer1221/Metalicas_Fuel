@@ -22,12 +22,6 @@ class Instalacion extends Model
         return $this->belongsTo('App\Models\Cliente','clientes_id');
     }
 
-
-
-
-
-
-
     //relacion uno a uno
     public function informes(){
         return $this ->hasOne('App\Models\Informe');
