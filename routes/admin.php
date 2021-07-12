@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\ConteoController;
 use App\Http\Controllers\Admin\ClienteController;
 use App\Http\Controllers\Admin\InstalacionController;
 use App\Http\Controllers\Admin\InformeController;
+use App\Http\Controllers\Admin\VentasController;
 
 
 
@@ -32,6 +33,7 @@ Route::resource('instalaciones', InstalacionController::class)->names('admin.ins
 
 Route::resource('informes', InformeController::class)->names('admin.informes');
 
+Route::resource('ventas', VentasController::class)->names('admin.ventas');
 
 
 
