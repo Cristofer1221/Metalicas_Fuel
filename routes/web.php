@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MailController;
 //use App\Http\Controllers\Admin\HomeController;
 
 /*
@@ -15,10 +16,13 @@ use App\Http\Controllers\HomeController;
 |
 */
 
+
+
 //Route::get('/', HomeController::class)->name('index');
 Route::get('/', function () {
     return view('welcome');
 });
+Route::post('/send-email',[MailController::class,'sendEmail'])->name('sendemail');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

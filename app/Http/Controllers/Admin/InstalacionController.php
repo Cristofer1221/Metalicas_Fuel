@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Cliente;
 use App\Models\Instalacion;
+use App\Models\Venta;
 use PDF;
 
 class InstalacionController extends Controller
@@ -61,7 +62,6 @@ class InstalacionController extends Controller
         'incalles'=>$request->incalles,
         'inindescripcion'=>$request->inindescripcion,
         'inobservacion'=>$request->inobservacion,
-
        ]);
 
        return redirect()->route('admin.instalaciones.index')->with('info','La instalación se creo satisfactoriamente.');
@@ -117,7 +117,7 @@ class InstalacionController extends Controller
     public function destroy(Instalacion $instalacione)
     {
         $instalacione->delete();
-        return redirect()->route('admin.instalaciones.index')->with('info','La instalación se elimino con éxito.');
+        return redirect()->route('admin.instalaciones.index')->with('info','La instalación se eliminó con éxito.');
     }
 
     public function show(Instalacion $instalacione){
@@ -126,6 +126,48 @@ class InstalacionController extends Controller
         //return $pdf->download('hojad_de_trabajo.pdf');
         //return view('admin.instalaciones.descargapdf', compact('instalacione'));
         return $pdf->stream();
+    }
+
+    public function nota($instalacion){
+        //dd($instalacion);
+
+        $insta = Instalacion::find($instalacion);
+        $cliente = Cliente::find($insta->cliente->id);
+        //dd($cliente);
+
+
+
+        return view('admin.instalaciones.nota' )->with('cliente',$cliente)->with('id_instalacion',$instalacion);
+    }
+
+    public function guardarnotas(Request $request){
+        //dd($request);
+        $request->validate([
+            'vfecha'=>'required',
+            'vpago'=>'required',
+            'vdetalle'=>'required',
+            'vsubtotal'=>'required',
+            'viva'=>'required',
+            'vtotal' =>'required'
+        ],[
+            'vfecha.required'=>'El campo fecha es obligatorio.',
+            'vpago.required'=>'El campo pago es obligatorio.',
+            'vdetalle.required'=>'Se necesita el campo detalle, cantidad y precio',
+            'vsubtotal.required'=>'Se necesita el campo subtotal.',
+            'viva.required'=>'Se necesita el campo I.V.A.',
+            'vtotal.required'=>'Se necesita el campo total.',
+        ]);
+
+        $not=Venta::create([
+            'instalaciones_id'=>$request->cliente_id,
+            'vfecha'=>$request->vfecha,
+            'vpago' =>$request->vpago,
+            'vdetalle'=>$request->detalle,
+            'vsubtotal'=>$request->vsubtotal,
+            'viva'=>$request->viva,
+            'vtotal'=>$request->vtotal,
+        ]);
+        return redirect()->route('admin.instalaciones.index')->with('info','La nota de venta se creó con éxito.');
     }
 
 

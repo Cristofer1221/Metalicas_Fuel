@@ -19,6 +19,7 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="assets/public/images/favicon.png" />
 
+    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" data-auto-a11y="true" ></script>
 
 
     <title>Tesis - Metalicas Fuel </title>
@@ -278,40 +279,57 @@
                     <p>Teléfono convencional 06 2987-717. </p>
                     <p>Calles Juan José Flores via al Aeropuerto</p>
                     <p>Tulcán - Ecuador. </p>
+                    <p>Contactos en whatsapp.</p>
+                    <a target="_blank" href="https://api.whatsapp.com/send?phone=[+593][0969399664]&text=Deseo%20información%20acerca%20de">
+                        <i class="fab fa-whatsapp fa-3x" style="color: green">
+                        </i>
+                    </a>
 
 
                 </div>
                 <div class="col-md-6 mt-4">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="" placeholder="Nombre">
-                            </div>
+                    @if (Session::has('message_sent'))
+                        <div class="alert alert-success" role="alert">
+                            {{Session::get('message_sent')}}
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="" placeholder="Apellido">
-                            </div>
+                    @endif
+                    <form method="POST" action="{{route('sendemail')}}" enctype="multipart/form-data">
+                        @csrf
+                        <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Apellido">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" name="email" id="email" placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" name="numero" id="numero" placeholder="Número">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <textarea name="msg" id="msg" class="form-control" placeholder="Mensaje"></textarea>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-primary full-width">Contactar</button>
+                                    {{-- <a href="" class="btn btn-primary full-width">Contactar para ventas</a> --}}
+                                </div>
                         </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <input type="email" class="form-control" id="" placeholder="Email">
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="" placeholder="Nombre de la organización">
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <input type="number" class="form-control" id="" placeholder="Número telefónico (opcional)">
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <a href="" class="btn btn-primary full-width">Contactar para ventas</a>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

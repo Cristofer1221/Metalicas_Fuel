@@ -27,6 +27,10 @@ class Instalacion extends Model
         return $this ->hasOne('App\Models\Informe');
     }
 
+    public function ventas(){
+        return $this ->hasOne('App\Models\Ventas');
+    }
+
 
 
 }

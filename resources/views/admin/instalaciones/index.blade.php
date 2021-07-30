@@ -60,6 +60,8 @@
                                     &nbsp;
                                     <button class="btn btn-danger" type="submit">Eliminar</button>
                                     <a href="{{route('admin.instalaciones.show',$instalacion)}}" class="btn btn-info" target="_blank">PDF</a>
+                                    <a href="{{route('nota',$instalacion)}}" class="btn btn-success">Nota de Venta</a>
+
                                 </form>
                             </td>
                         </tr>
@@ -110,7 +112,7 @@
     <script>
         Swal.fire(
             '¡Eliminado!',
-            'La instalación se elimino con éxito.',
+            'La instalación se eliminó con éxito.',
             'success'
             )
     </script>

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Example 1</title>
+    <title>Hoja de Trabajo {{$instalacione->id}}</title>
     <link rel="stylesheet" href="{{asset('css/hoja.css')}}" media="all" />
   </head>
   <body>

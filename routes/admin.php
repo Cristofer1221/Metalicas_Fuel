@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\ClienteController;
 use App\Http\Controllers\Admin\InstalacionController;
 use App\Http\Controllers\Admin\InformeController;
 use App\Http\Controllers\Admin\VentasController;
+use App\Http\Controllers\Admin\SearchController;
 
 
 
@@ -31,9 +32,21 @@ Route::resource('clientes', ClienteController::class)->names('admin.clientes');
 
 Route::resource('instalaciones', InstalacionController::class)->names('admin.instalaciones');
 
+Route::get('nota/{id}',[InstalacionController::class,'nota'])->name('nota');
+
+Route::post('/instalacione/guardarnotas',[InstalacionController::class,'guardarnotas'])->name('admin.instalaciones.guardarnotas');
+
 Route::resource('informes', InformeController::class)->names('admin.informes');
 
+
+
+
+
 Route::resource('ventas', VentasController::class)->names('admin.ventas');
+
+Route::get('/ventas/search', [VentasController::class, 'search'])->name('admin.ventas.search');
+
+//Route::get('/ventas/search',[SearchController::class,'search'])->name('admin.ventas.search');
 
 
 
