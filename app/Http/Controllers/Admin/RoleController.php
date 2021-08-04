@@ -9,6 +9,14 @@ use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller
 {
+    public function __construct(){
+        $this->middleware('can:Listar Role')->only('index');
+        $this->middleware('can:Crear Role')->only('create','store');
+        $this->middleware('can:Editar Role')->only('edit','update');
+        $this->middleware('can:Eliminar Role')->only('destroy');
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -41,8 +49,14 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' =>'required',
+            'name' =>'required|min:3|max:40|regex:/^[a-zA-Z\s]+$/u',
             'permissions' =>'required'
+        ],[
+            'name.required'=>'El campo nombre es requerido.',
+            'name.min'=>'El campo nombre debe de tener minimo 3 caracteres.',
+            'name.max'=>'El campo nombre debe ed tener un maximo de 40 caracteres.',
+            'name.regex'=>'El campo nombre debe de contener solo caracteres alfabéticos.',
+            'permissions.required' =>'El campo permisos es requerido.',
         ]);
 
         $role = Role::create([
@@ -88,8 +102,14 @@ class RoleController extends Controller
     public function update(Request $request, Role $role)
     {
         $request->validate([
-            'name' =>'required',
+            'name' =>'required|min:3|max:40|regex:/^[a-zA-Z\s]+$/u',
             'permissions' =>'required'
+        ],[
+            'name.required'=>'El campo nombre es requerido.',
+            'name.min'=>'El campo nombre debe de tener minimo 3 caracteres.',
+            'name.max'=>'El campo nombre debe ed tener un maximo de 40 caracteres.',
+            'name.regex'=>'El campo nombre debe de contener solo caracteres alfabéticos.',
+            'permissions.required' =>'El campo permisos es requerido.',
         ]);
 
         $role->update([
@@ -98,7 +118,7 @@ class RoleController extends Controller
 
         $role->permissions()->sync($request->permissions);
 
-        return redirect()->route('admin.roles.edit',$role);
+        return redirect()->route('admin.roles.edit',$role)->with('info','El rol se edito con éxito');
     }
 
     /**

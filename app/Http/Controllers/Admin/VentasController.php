@@ -9,6 +9,13 @@ use PDF;
 
 class VentasController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('can:Leer Ventas')->only('index');
+        $this->middleware('can:Eliminar Ventas')->only('destroy');
+        $this->middleware('can:Mostrar PDF Ventas')->only('show');
+    }
+
     public function index(){
         $ventas=Venta::all();
 

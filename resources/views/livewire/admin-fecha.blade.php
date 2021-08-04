@@ -16,7 +16,9 @@
                     <thead>
                         <th>Id</th>
                         <th>Fecha</th>
-                        <th><a class="btn btn-success" href="{{route('admin.fechas.create')}}">Crear Fecha</a></th>
+                        @can('Crear Fecha')
+                            <th><a class="btn btn-success" href="{{route('admin.fechas.create')}}">Crear Fecha</a></th>
+                        @endcan
 
                     </thead>
 
@@ -25,15 +27,20 @@
                             <tr>
                                 <td>{{$fecha->id}}</td>
                                 <td>{{$fecha->fecha_trabajo}}</td>
+                                @can('Editar Fecha')
+                                    <td>
+                                        <a  class="btn btn-primary" href={{route('admin.fechas.edit',$fecha)}}>Editar</a>
+                                    </td>
+                                @endcan
+
                                 <td>
-                                    <a  class="btn btn-primary" href={{route('admin.fechas.edit',$fecha)}}>Editar</a>
-                                </td>
-                                <td>
-                                    <form action="{{route('admin.fechas.destroy', $fecha)}}" class="formulario-eliminar" method="POST">
-                                        @method('delete')
-                                        @csrf
-                                    <button class="btn btn-danger" type="submit">Eliminar</button>
-                                    </form>
+                                    @can('Eliminar Fecha')
+                                        <form action="{{route('admin.fechas.destroy', $fecha)}}" class="formulario-eliminar" method="POST">
+                                            @method('delete')
+                                            @csrf
+                                            <button class="btn btn-danger" type="submit">Eliminar</button>
+                                        </form>
+                                    @endcan
                                 </td>
                             </tr>
                         @endforeach

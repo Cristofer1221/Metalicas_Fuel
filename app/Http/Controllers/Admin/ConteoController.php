@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\DB;
 
 class ConteoController extends Controller
 {
+    public function __construct(){
+        $this->middleware('can:Leer Asistencia Personal')->only('index');
+    }
+
     public function index(Asistencia $asistencia,User $user){
         $user = auth()->user(); //datos de usuario para presentar
         $id_user=auth()->id(); //1

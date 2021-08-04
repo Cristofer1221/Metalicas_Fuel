@@ -8,6 +8,13 @@ use App\Models\Cliente;
 
 class ClienteController extends Controller
 {
+    public function __construct(){
+        $this->middleware('can:Leer Clientes')->only('index');
+        $this->middleware('can:Crear Clientes')->only('create','store');
+        $this->middleware('can:Editar Clientes')->only('edit','update');
+        $this->middleware('can:Eliminar Clientes')->only('destroy');
+    }
+
     //
     public function index(){
 

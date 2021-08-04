@@ -9,6 +9,13 @@ use App\Models\User;
 
 class FechaController extends Controller
 {
+    public function __construct(){
+        $this->middleware('can:Leer Fecha')->only('index');
+        $this->middleware('can:Crear Fecha')->only('create','store');
+        $this->middleware('can:Editar Fecha')->only('edit','update');
+        $this->middleware('can:Eliminar Fecha')->only('destroy');
+    }
+
     //
     public function index(){
 

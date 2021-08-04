@@ -13,6 +13,14 @@ use PDF;
 
 class InstalacionController extends Controller
 {
+    public function __construct(){
+        $this->middleware('can:Leer Instalacion')->only('index');
+        $this->middleware('can:Crear Instalacion')->only('create','store');
+        $this->middleware('can:Editar Instalacion')->only('edit','update');
+        $this->middleware('can:Eliminar Instalacion')->only('destroy');
+        $this->middleware('can:Mostrar PDF Instalacion')->only('show');
+    }
+
     public function index(){
         $instalaciones=Instalacion::all();
         //dd($insta);
@@ -145,14 +153,13 @@ class InstalacionController extends Controller
         $request->validate([
             'vfecha'=>'required',
             'vpago'=>'required',
-            'vdetalle'=>'required',
+
             'vsubtotal'=>'required',
             'viva'=>'required',
             'vtotal' =>'required'
         ],[
             'vfecha.required'=>'El campo fecha es obligatorio.',
             'vpago.required'=>'El campo pago es obligatorio.',
-            'vdetalle.required'=>'Se necesita el campo detalle, cantidad y precio',
             'vsubtotal.required'=>'Se necesita el campo subtotal.',
             'viva.required'=>'Se necesita el campo I.V.A.',
             'vtotal.required'=>'Se necesita el campo total.',

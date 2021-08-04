@@ -40,7 +40,7 @@
 
         <div class="card-body">
 
-            {!! Form::model($user,['route'=> ['admin.users.update',$user],'class'=>'row g-3','method'=>'put']) !!}
+            {!! Form::model($user,['route'=> ['admin.users.update',$user],'method'=>'put','class'=>'row g-3']) !!}
                 <div class="col-md-4">
                     <label>Asignación de Rol</label>
                     @foreach ($roles as $role)

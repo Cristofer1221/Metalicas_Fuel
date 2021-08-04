@@ -126,10 +126,11 @@
                     <input type="text" id="detalle" name="detalle" hidden="true">
                 </table>
 
-
-                <div class="d-grid mx-auto">
-                    {!! Form::submit('Crear Nota de Ventas', ['class'=>'mt-4 btn btn-primary ']) !!}
-                </div>
+                @can('Guardar Nota')
+                    <div class="d-grid mx-auto">
+                        {!! Form::submit('Crear Nota de Ventas', ['class'=>'mt-4 btn btn-primary ']) !!}
+                    </div>
+                @endcan
 
             {!! Form::close() !!}
             <br>

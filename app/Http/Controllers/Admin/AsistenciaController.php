@@ -11,6 +11,14 @@ use App\Models\Fecha;
 
 class AsistenciaController extends Controller
 {
+    public function __construct(){
+        $this->middleware('can:Leer Asistencia')->only('index');
+        $this->middleware('can:Crear Asistencia')->only('create','store');
+        $this->middleware('can:Editar Asistencia')->only('edit','update');
+        $this->middleware('can:Eliminar Asistencia')->only('destroy');
+    }
+
+
     public function index(){
         //$asistencias=Asistencia::all();
         $asistencia = new Asistencia();

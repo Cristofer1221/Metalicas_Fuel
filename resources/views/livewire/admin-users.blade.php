@@ -11,7 +11,10 @@
             </div>
         @endif
         <br>
-        <a class="btn btn-success d-grid gap-6 col-4 mx-auto" href="{{route('admin.users.create')}}">Crear Usuario</a>
+        @can('Crear Usuarios')
+            <a class="btn btn-success d-grid gap-6 col-4 mx-auto" href="{{route('admin.users.create')}}">Crear Usuario</a>
+        @endcan
+
         @if ($users->count())
 
             <div class="card-body">
@@ -50,18 +53,22 @@
                                     <td>{{$user->jornada}}</td>
                                     <td>{{$user->genero}}</td>
 
-                                    <td >
-                                        <a  class="btn btn-primary" href="{{route('admin.users.edit',$user)}}">Editar</a>
-                                    </td>
+                                    @can('Editar Usuarios')
+                                        <td >
+                                            <a  class="btn btn-primary" href="{{route('admin.users.edit',$user)}}">Editar</a>
+                                        </td>
+                                    @endcan
 
-                                    <td >
-                                        <form action="{{route('admin.users.destroy', $user)}}" class="formulario-eliminar" method="POST">
-                                            @method('delete')
-                                            @csrf
-                                            <button class="btn btn-danger" type="submit">Eliminar</button>
-                                        </form>
-                                    </td>
-                                    
+                                    @can('Eliminar Usuarios')
+                                        <td >
+                                            <form action="{{route('admin.users.destroy', $user)}}" class="formulario-eliminar" method="POST">
+                                                @method('delete')
+                                                @csrf
+                                                <button class="btn btn-danger" type="submit">Eliminar</button>
+                                            </form>
+                                        </td>
+                                    @endcan
+
                                 </tr>
                             @endforeach
                         </tbody>

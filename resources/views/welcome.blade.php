@@ -279,7 +279,7 @@
                     <p>Teléfono convencional 06 2987-717. </p>
                     <p>Calles Juan José Flores via al Aeropuerto</p>
                     <p>Tulcán - Ecuador. </p>
-                    <p>Contactos en whatsapp.</p>
+                    <p>Contacto en whatsapp.</p>
                     <a target="_blank" href="https://api.whatsapp.com/send?phone=[+593][0969399664]&text=Deseo%20información%20acerca%20de">
                         <i class="fab fa-whatsapp fa-3x" style="color: green">
                         </i>

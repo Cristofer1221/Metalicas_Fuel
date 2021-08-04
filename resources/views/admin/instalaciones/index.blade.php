@@ -7,7 +7,9 @@
 @stop
 
 @section('content')
-    <a href="{{route('admin.instalaciones.create')}}" class="btn btn-success mb-2">Crear Instalación</a>
+    @can('Crear Instalacion')
+        <a href="{{route('admin.instalaciones.create')}}" class="btn btn-success mb-2">Crear Instalación</a>
+    @endcan
     <div class="card">
         @if (session('info'))
             <div class="alert alert-success" role="alert">
@@ -17,7 +19,6 @@
 
         <div class="card-body">
             <table  class="table table-responsive" id="instalaciones">
-
                 <thead>
                     <tr>
                         <th scope="col">Id</th>
@@ -52,18 +53,34 @@
                             <td>{{$instalacion->inindescripcion}}</td>
                             <td>{{$instalacion->inobservacion}}</td>
 
-                            <td>
-                                <form action="{{route('admin.instalaciones.destroy', $instalacion)}}" class="formulario-eliminar" method="POST">
-                                    <a  class="btn btn-primary" href="{{route('admin.instalaciones.edit',$instalacion)}}">Editar</a>
-                                    @method('delete')
-                                    @csrf
-                                    &nbsp;
-                                    <button class="btn btn-danger" type="submit">Eliminar</button>
-                                    <a href="{{route('admin.instalaciones.show',$instalacion)}}" class="btn btn-info" target="_blank">PDF</a>
-                                    <a href="{{route('nota',$instalacion)}}" class="btn btn-success">Nota de Venta</a>
+                            @can('Editar Instalacion')
+                                <td>
+                                    <a class="btn btn-primary" href="{{route('admin.instalaciones.edit',$instalacion)}}">Editar</a>
+                                </td>
+                            @endcan
 
-                                </form>
-                            </td>
+                            @can('Mostrar PDF Instalacion')
+                                <td>
+                                    <a href="{{route('admin.instalaciones.show',$instalacion)}}" class="btn btn-info" target="_blank">PDF</a>
+                                </td>
+                            @endcan
+
+                            @can('Eliminar Instalacion')
+                                <td>
+                                    <form action="{{route('admin.instalaciones.destroy', $instalacion)}}" class="formulario-eliminar" method="POST">
+                                        @method('delete')
+                                        @csrf
+                                        <button class="btn btn-danger" type="submit">Eliminar</button>
+                                    </form>
+                                </td>
+                            @endcan
+
+                            @can('Crear Nota')
+                                <td>
+                                    <a href="{{route('nota',$instalacion)}}" class="btn btn-success">Nota de Venta</a>
+                                </td>
+                            @endcan
+
                         </tr>
                      @endforeach
                 </tbody>

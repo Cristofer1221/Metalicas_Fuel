@@ -9,7 +9,10 @@
 @stop
 
 @section('content')
-<a href="{{route('admin.asistencias.create')}}" class="btn btn-success mb-2">Crear Asistencia</a>
+    @can('Crear Asistencia')
+        <a href="{{route('admin.asistencias.create')}}" class="btn btn-success mb-2">Crear Asistencia</a>
+    @endcan
+
     <div class="card">
         @if (session('info'))
         <div class="alert alert-success" role="alert">
@@ -43,12 +46,19 @@
                             @endif
 
                             <td>
-                                <form action="{{route('admin.asistencias.destroy', $asistencia)}}" class="formulario-eliminar" method="POST">
-                                    <a  class="btn btn-primary" href="{{route('admin.asistencias.edit',$asistencia)}}">Editar</a>
-                                    @method('delete')
-                                    @csrf
-                                <button class="btn btn-danger" type="submit">Eliminar</button>
-                                </form>
+                                @can('Eliminar Asistencia')
+                                    <form action="{{route('admin.asistencias.destroy', $asistencia)}}" class="formulario-eliminar" method="POST">
+                                        
+                                        @can('Editar Asistencia')
+                                            <a  class="btn btn-primary" href="{{route('admin.asistencias.edit',$asistencia)}}">Editar</a>
+                                        @endcan
+
+                                        @method('delete')
+                                        @csrf
+                                        <button class="btn btn-danger" type="submit">Eliminar</button>
+                                    </form>
+                                @endcan
+
                             </td>
                         </tr>
                     @endforeach

@@ -10,6 +10,14 @@ use PDF;
 
 class InformeController extends Controller
 {
+    public function __construct(){
+        $this->middleware('can:Leer Informes')->only('index');
+        $this->middleware('can:Crear Informes')->only('create','store');
+        $this->middleware('can:Editar Informes')->only('edit','update');
+        $this->middleware('can:Eliminar Informes')->only('destroy');
+        $this->middleware('can:Mostrar PDF Informes')->only('show');
+    }
+
     public function index(){
 
         $informes=Informe::all();
@@ -92,8 +100,6 @@ class InformeController extends Controller
     public function show(Informe $informe){
         $pdf=PDF::loadview('admin.informes.informepdf', compact('informe'));
         return $pdf->stream();
-
-        
     }
 
 }

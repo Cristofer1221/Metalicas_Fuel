@@ -43,15 +43,23 @@
                     <td>{{$venta->vsubtotal}}</td>
                     <td>{{$venta->viva}}</td>
                     <td>{{$venta->vtotal}}</td>
-                    <td>
-                        <form action="{{route('admin.ventas.destroy', $venta)}}" class="formulario-eliminar" method="POST">
-                            @method('delete')
-                            @csrf
-                            &nbsp;
+
+                    @can('Mostrar PDF Ventas')
+                        <td>
                             <a href="{{route('admin.ventas.show',$venta)}}" class="btn btn-success" target="_blank">PDF</a>
-                            <button class="btn btn-danger" type="submit">Eliminar</button>
-                        </form>
-                    </td>
+                        </td>
+                    @endcan
+
+                    @can('Eliminar Ventas')
+                        <td>
+                            <form action="{{route('admin.ventas.destroy', $venta)}}" class="formulario-eliminar" method="POST">
+                                @method('delete')
+                                @csrf
+                                <button class="btn btn-danger" type="submit">Eliminar</button>
+                            </form>
+                        </td>
+                    @endcan
+                    
                 </tr>
                 @endforeach
 

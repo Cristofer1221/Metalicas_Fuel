@@ -8,12 +8,19 @@
 
     @section('content')
         <div class="card">
+            @if (session('info'))
+                <div class="alert alert-success" role="alert">
+                    <h4 class="alert-heading">¡Éxito!</h4> {{session('info')}}
+                </div>
+            @endif
             <div class="card-body">
                 {!! Form::model($role,['route'=>['admin.roles.update', $role], 'method'=>'put']) !!}
 
                     @include('admin.roles.partials.form')
 
-                    {!! Form::submit('Actualizar Role', ['class'=>'btn btn-primary mt-2']) !!}
+                    @can('Editar Role')
+                        {!! Form::submit('Actualizar Rol', ['class'=>'btn btn-primary mt-2']) !!}
+                    @endcan
 
                 {!! Form::close() !!}
 

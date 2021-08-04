@@ -246,6 +246,7 @@ return [
             'text'        => 'Inicio',
             'route'       => 'admin.index',
             'icon'        => 'fas fa-fw fa-tachometer-alt',
+            'can'         => 'Ver dashboard'
         ],
         [
             'text' => 'blog',
@@ -257,6 +258,7 @@ return [
             'text'        => 'Lista de Roles',
             'route'       => 'admin.roles.index',
             'icon'        => 'fas fa-fw fa-users-cog',
+            'can'         => 'Listar Role',
             'active'    => ['admin/roles*']
 
 
@@ -265,6 +267,7 @@ return [
             'text'        => 'Usuarios',
             'route'       => 'admin.users.index',
             'icon'        => 'fas fa-fw fa-users',
+            'can'         => 'Leer Usuarios',
             'active'    => ['admin/users*']
 
         ],
@@ -273,24 +276,28 @@ return [
             'text'        => 'Fecha de asistencia',
             'route'       => 'admin.fechas.index',
             'icon'        => 'fas fa-fw fa-building',
+            'can'         => 'Leer Fecha',
             'active'    => ['admin/fechas.*']
         ],
         [
             'text'        => 'Asistencias',
             'route'       => 'admin.asistencias.index',
             'icon'        => 'fas fa-fw fa-address-book',
+            'can'         => 'Leer Asistencia',
             'active'    => ['admin.asistencias.*']
         ],
 
         [
             'text' => 'Asistencia Personal',
             'route'  =>'admin.conteo',
+            'can'    =>'Leer Asistencia Personal',
             'icon' => 'fas fa-fw fa-user-check',
         ],
 
         [
             'text' => 'Clientes',
             'route'  => 'admin.clientes.index',
+            'can'  => 'Leer Clientes',
             'icon' => 'fas fa-fw fa-address-card',
             'active' => ['admin.clientes.*']
         ],
@@ -298,18 +305,21 @@ return [
             'text' => 'Instalaciones',
             'route'  => 'admin.instalaciones.index',
             'icon' => 'fas fa-fw fa-briefcase',
+            'can'  =>'Leer Instalacion',
             'active' => ['admin.instalaciones.*']
         ],
         [
             'text' => 'Informes',
             'route'  => 'admin.informes.index',
             'icon' => 'fas fa-fw fa-file-alt',
+            'can'  =>'Leer Informes',
             'active' => ['admin.informes.*']
         ],
         [
             'text' => 'Notas de Venta',
             'route'  => 'admin.ventas.index',
             'icon' => 'fas fa-fw fa-file-invoice-dollar',
+            'can'=>'Leer Ventas',
             'active' => ['admin.ventas.*']
         ],
     ],

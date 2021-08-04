@@ -11,11 +11,13 @@
             </div>
         @endif
         <br>
-        <a class="btn btn-success d-grid gap-2 col-6 mx-auto" href="{{route('admin.clientes.create')}}">Crear Cliente</a>
+        @can('Crear Clientes')
+            <a class="btn btn-success d-grid gap-2 col-6 mx-auto" href="{{route('admin.clientes.create')}}">Crear Cliente</a>
+        @endcan
 
         @if ($clientes->count())
 
-            <div class="card-body">
+            <div class="card-body" style="margin: 0 auto;">
 
                 <table class="table-responsive table">
                     {{-- <table class="table table-striped"> --}}
@@ -38,20 +40,26 @@
                                     <td>{{$cliente->ccedula}}</td>
                                     <td>{{$cliente->ccelular}}</td>
 
-                                    <td width="10px">
+                                    @can('Editar Clientes')
+                                        <td>
                                             <a  class="btn btn-primary" href="{{route('admin.clientes.edit',$cliente)}}">Editar</a>
-
+                                        </td>
+                                    @endcan
+                                    @can('Eliminar Clientes')
+                                        <td>
                                             <form action="{{route('admin.clientes.destroy', $cliente)}}" class="formulario-eliminar" method="POST">
                                                 @method('delete')
                                                 @csrf
                                                 <button class="btn btn-danger" type="submit">Eliminar</button>
                                             </form>
-                                    </td>
+                                        </td>
+                                    @endcan
                                 </tr>
                             @endforeach
                         </tbody>
                     {{-- </table> --}}
                 </table>
+
             </div>
             <div class="card-footer">
                 {{$clientes->links()}}

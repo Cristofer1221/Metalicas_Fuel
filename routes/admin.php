@@ -16,33 +16,34 @@ use App\Http\Controllers\Admin\SearchController;
 
 
 
-Route::get('',[HomeController::class, 'index'])->name('admin.index');
+Route::get('',[HomeController::class, 'index'])->middleware('can:Ver dashboard')->name('admin.index');
 
 Route::resource('roles',RoleController::class)->names('admin.roles');
 
-Route::resource('users',UserController::class)->names('admin.users');
+Route::resource('users',UserController::class)->only('index','create','store','edit','update','destroy')->names('admin.users');
 
 Route::resource('asistencias',AsistenciaController::class)->names('admin.asistencias');
 
 Route::resource('fechas',FechaController::class)->names('admin.fechas');
 
-Route::get('conteo',[ConteoController::class,'index'])->name('admin.conteo');
+Route::get('conteo',[ConteoController::class,'index'])->middleware('can:Leer Asistencia Personal')->name('admin.conteo');
 
 Route::resource('clientes', ClienteController::class)->names('admin.clientes');
 
 Route::resource('instalaciones', InstalacionController::class)->names('admin.instalaciones');
 
-Route::get('nota/{id}',[InstalacionController::class,'nota'])->name('nota');
+Route::get('nota/{id}',[InstalacionController::class,'nota'])->middleware('can:Crear Nota')->name('nota');
 
-Route::post('/instalacione/guardarnotas',[InstalacionController::class,'guardarnotas'])->name('admin.instalaciones.guardarnotas');
+Route::post('/instalacione/guardarnotas',[InstalacionController::class,'guardarnotas'])->middleware('can:Guardar Nota')->name('admin.instalaciones.guardarnotas');
 
 Route::resource('informes', InformeController::class)->names('admin.informes');
 
-
-
-
-
 Route::resource('ventas', VentasController::class)->names('admin.ventas');
+
+
+
+
+
 
 Route::get('/ventas/search', [VentasController::class, 'search'])->name('admin.ventas.search');
 

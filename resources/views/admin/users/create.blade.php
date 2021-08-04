@@ -97,9 +97,9 @@
                         @enderror
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <br>
-                        {!! Form::label('telefono', 'Teléfono Convencional: ') !!}
+                        {!! Form::label('telefono', 'TelF. Convencional: ') !!}
                         {!! Form::Number('telefono',null, ['class' => 'form-control' . ($errors->has('telefono') ? ' is-invalid' : ''), 'placeholder' =>'Ingrese un número telefónico convencional... ']) !!}
                         @error('telefono')
                             <span class="invalid-feedback">
@@ -126,6 +126,12 @@
                     </div>
 
                     <div class="col-md-3">
+                        <br>
+                        {!! Form::label('jornada', 'Jornada Laboral') !!}
+                        {{ Form::select('jornada', array('Matutina' => 'Matutina', 'Vespertina' => 'Vespertina', 'Completa' => 'Completa'), null, ['class' => 'form-control']) }}
+                    </div>
+
+                    <div class="col-md-1">
                         <br>
                         {!! Form::label('genero', 'Genero') !!}
                         {{ Form::select('genero', array('M' => 'M', 'F' => 'F', 'Otros' => 'Otros'), null, ['class' => 'form-control']) }}
