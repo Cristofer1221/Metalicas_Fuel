@@ -10,6 +10,11 @@
     @can('Crear Instalacion')
         <a href="{{route('admin.instalaciones.create')}}" class="btn btn-success mb-2">Crear Instalación</a>
     @endcan
+
+    @can('Crear Informes')
+        <a href="{{route('admin.informes.create')}}" class="btn btn-primary mb-2">Crear Informe</a>
+    @endcan
+
     <div class="card">
         @if (session('info'))
             <div class="alert alert-success" role="alert">
