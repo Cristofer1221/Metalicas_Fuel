@@ -11,7 +11,7 @@ use App\Http\Controllers\Admin\ClienteController;
 use App\Http\Controllers\Admin\InstalacionController;
 use App\Http\Controllers\Admin\InformeController;
 use App\Http\Controllers\Admin\VentasController;
-use App\Http\Controllers\Admin\SearchController;
+
 
 
 
@@ -40,14 +40,6 @@ Route::resource('informes', InformeController::class)->names('admin.informes');
 
 Route::resource('ventas', VentasController::class)->names('admin.ventas');
 
-
-
-
-
-
-Route::get('/ventas/search', [VentasController::class, 'search'])->name('admin.ventas.search');
-
-//Route::get('/ventas/search',[SearchController::class,'search'])->name('admin.ventas.search');
 
 
 

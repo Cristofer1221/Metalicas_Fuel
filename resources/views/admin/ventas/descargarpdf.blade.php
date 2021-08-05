@@ -32,8 +32,8 @@
           <tr>
               <th></th>
             <th>DETALLE</th>
-            <th>PRECIO</th>
             <th>CANTIDAD</th>
+            <th>PRECIO</th>
             <th>TOTAL</th>
           </tr>
         </thead>
